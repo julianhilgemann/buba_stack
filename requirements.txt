@@ -1,0 +1,18 @@
+# Airflow for scheduling and orchestration
+apache-airflow==2.10.4
+apache-airflow-providers-postgres
+
+# API calls and data extraction libraries
+requests
+pandas
+pandasdmx
+# Database connectivity for PostgreSQL
+psycopg2-binary
+
+# Forecasting and Econometrics libraries
+statsmodels
+scikit-learn
+
+# dbt for data transformations (local installation using dbt-core and dbt-postgres adapter)
+dbt-core
+dbt-postgres

@@ -1,0 +1,44 @@
+my_portfolio_project/
+├── airflow/
+│   ├── dags/
+│   │   └── fetch_bundesbank_data_dag.py    # DAG that extracts data, triggers dbt, and forecasting tasks.
+│   ├── plugins/
+│   │   └── custom_operators.py              # (Optional) custom operators if you extend beyond default tasks.
+│   ├── requirements.txt                     # Airflow-specific dependencies.
+│   └── README.md                            # How to run Airflow locally.
+│
+├── dbt/
+│   ├── analysis/                            # (Optional) for exploratory SQL analysis.
+│   ├── data/
+│   │   └── seeds/                           # CSV seed files (e.g., model parameters, lookup tables).
+│   ├── macros/                              # Custom Jinja macros used in your dbt models.
+│   ├── models/
+│   │   ├── staging/
+│   │   │   └── stg_bundesbank_data.sql       # Raw table cleaning (casting, parsing dates, etc.).
+│   │   ├── marts/
+│   │   │   ├── interest_rates.sql           # Integrated fact/dimension tables.
+│   │   │   └── forecast_results.sql         # Table for storing forecast outputs.
+│   │   └── forecasts/
+│   │       └── forecast_model_output.sql    # Additional transformation that might tie model outputs with raw forecasts.
+│   ├── dbt_project.yml                      # dbt project configuration.
+│   └── packages.yml                         # (Optional) packages that dbt can use.
+│
+├── src/
+│   ├── bundesbank_api/
+│   │   ├── fetch_data.py                    # Script to fetch time series from Bundesbank API.
+│   │   ├── sdmx_parser.py                   # Utility to parse SDMX format (and/or convert to CSV).
+│   │   └── common.py                        # Common functionality (configurations, logging, etc.).
+│   ├── data_processing/
+│   │   ├── transform_data.py                # Additional transformation logic if needed outside dbt.
+│   │   └── forecast.py                      # Script for econometric/ML model forecasts.
+│   └── requirements.txt                     # Python libraries required for these scripts.
+│
+├── docker/                                  # Containerization files for later deployment.
+│   ├── Dockerfile
+│   └── docker-compose.yml
+│
+├── tests/                                   # Unit/integration tests for data extraction and processing.
+│   └── test_fetch_data.py
+│
+├── .gitignore
+└── README.md                                # Overall project documentation.
